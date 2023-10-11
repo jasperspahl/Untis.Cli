@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Untis.Cli", "Untis.Cli\Untis.Cli.csproj", "{9C3AC663-DE83-4881-8FF3-FEC3B1EEA9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Untis.Tests", "Untis.Tests\Untis.Tests.csproj", "{F380A370-DC57-486A-A968-E65CEF6212AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Untis.Client", "Untis.Client\Untis.Client.csproj", "{C69D3133-CEBC-48D6-9F2A-DB4DBB7AF8C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Untis.Playground", "Untis.Playground\Untis.Playground.csproj", "{80F96AE2-B236-4982-9632-726CCC6FE246}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C3AC663-DE83-4881-8FF3-FEC3B1EEA9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3AC663-DE83-4881-8FF3-FEC3B1EEA9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3AC663-DE83-4881-8FF3-FEC3B1EEA9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3AC663-DE83-4881-8FF3-FEC3B1EEA9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F380A370-DC57-486A-A968-E65CEF6212AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F380A370-DC57-486A-A968-E65CEF6212AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F380A370-DC57-486A-A968-E65CEF6212AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F380A370-DC57-486A-A968-E65CEF6212AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69D3133-CEBC-48D6-9F2A-DB4DBB7AF8C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69D3133-CEBC-48D6-9F2A-DB4DBB7AF8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69D3133-CEBC-48D6-9F2A-DB4DBB7AF8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69D3133-CEBC-48D6-9F2A-DB4DBB7AF8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F96AE2-B236-4982-9632-726CCC6FE246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F96AE2-B236-4982-9632-726CCC6FE246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F96AE2-B236-4982-9632-726CCC6FE246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F96AE2-B236-4982-9632-726CCC6FE246}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
