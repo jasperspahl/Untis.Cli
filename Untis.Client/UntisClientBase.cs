@@ -5,6 +5,7 @@ using Untis.Client.Contracts;
 using Untis.Client.Contracts.Enum;
 using Untis.Client.JsonRpc;
 using InvalidOperationException = System.InvalidOperationException;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Untis.Client;
 
@@ -128,6 +129,8 @@ public abstract class UntisClientBase: IUntisClient
         public bool ShowSubstText { get; set; }
         [JsonPropertyName("showInfo")]
         public bool ShowInfo { get; set; }
+        [JsonPropertyName("showBooking")]
+        public bool ShowBooking { get; set; }
         [JsonPropertyName("startDate")]
         public string? StartDate { get; set; }
         [JsonPropertyName("endDate")]
@@ -158,6 +161,7 @@ public abstract class UntisClientBase: IUntisClient
             ShowLsNumber = true,
             ShowSubstText = true,
             ShowInfo = true,
+            ShowBooking = true,
             KlasseFields = new List<string> {"id", "name", "longname", "externalkey"},
             RoomFields = new List<string> {"id", "name", "longname", "externalkey"},
             SubjectFields = new List<string> {"id", "name", "longname", "externalkey"},

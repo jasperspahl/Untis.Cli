@@ -2,6 +2,7 @@ using System.CommandLine;
 using Spectre.Console;
 using Untis.Cli.Binding;
 using Untis.Client;
+using Untis.Client.Contracts;
 
 namespace Untis.Cli.Commands;
 
@@ -24,7 +25,7 @@ public class ShowDayCommand: Command
         this.SetHandler(Run, new UntisClientBinder(this), _dayOption, _tomorrowOption);
     }
 
-    private async Task Run(IUntisClient client, DateTime date, bool tomorrow)
+    internal static async Task Run(IUntisClient client, DateTime date, bool tomorrow)
     {
         
         await AnsiConsole.Status()
@@ -47,6 +48,16 @@ public class ShowDayCommand: Command
             });
         
         timetable.Sort((a, b) => a.StartTime.CompareTo(b.StartTime));
+        Dictionary<string, List<Lesson>> lessonsByTime = new();
+        foreach (var lesson in timetable)
+        {
+            var time = $"{lesson.StartTime:00:00}-{lesson.EndTime:00:00}";
+            if (!lessonsByTime.ContainsKey(time))
+            {
+                lessonsByTime.Add(time, new List<Lesson>());
+            }
+            lessonsByTime[time].Add(lesson);
+        }
 
         var table = new Table
         {
@@ -57,16 +68,33 @@ public class ShowDayCommand: Command
         table.AddColumn(new TableColumn("Fach").Centered());
         table.AddColumn("Lehrer");
         table.AddColumn("Raum");
-        foreach (var lesson in timetable)
+
+        foreach (var (_, lessons) in lessonsByTime)
         {
+
+            var subjects = lessons.Select(x => new Markup($"[{MapToColor(x.Code)}]{x.Su.First().Name}[/]"));
+
+            var teachers = lessons.Select(x => new Markup($"[{MapToColor(x.Code)}]{x.Te.First().LongName}[/]"));
+            var room = lessons.Select(x => new Markup($"[{MapToColor(x.Code)}]{x.Ro.First().Name}[/]"));
+            
             table.AddRow(
-                $"[green]{lesson.StartTime:00:00}[/]-[red]{lesson.EndTime:00:00}[/]",
-                lesson.Su.First().Name,
-                lesson.Te.First().LongName,
-                lesson.Ro.First().Name
+                new Markup($"[green]{lessons.First().StartTime:00:00}[/]-[red]{lessons.First().EndTime:00:00}[/]"),
+                new Columns(subjects),
+                new Columns(teachers),
+                new Columns(room)
             );
         }
         
         AnsiConsole.Write(table);
+        return;
     }
+
+    private static string MapToColor(string? x) =>
+        x switch
+        {
+            "irregular" => "yellow",
+            "cancelled" => "strikethrough red",
+            _ => "white"
+        };
+    
 }
